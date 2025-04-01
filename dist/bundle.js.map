@@ -1,0 +1,1 @@
+{"version":3,"file":"bundle.js","mappings":"mBAEAA,QAAQC,IADM,kC","sources":["webpack:///./src/index.ts"],"sourcesContent":["\"use strict\";\nvar message = 'Hello, Webpack with TypeScript!';\nconsole.log(message);\n"],"names":["console","log"],"sourceRoot":""}

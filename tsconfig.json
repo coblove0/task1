@@ -5,6 +5,17 @@
       "@components/*": ["components/*"],
       "@utils/*": ["utils/*"],
       "@models/*": ["models/*"]
-    }
-  }
+    },
+    "target": "ES5",                          // Указывает, какой версии JavaScript будет транслироваться TypeScript
+    "module": "ESNext",                       // Указывает модульный стандарт
+    "moduleResolution": "node",               // Модульная система для разрешения модулей
+    "strict": true,                           // Включает строгий режим
+    "esModuleInterop": true,                  // Для совместимости с CommonJS
+    "skipLibCheck": true,                     // Пропуск проверки библиотек
+    "forceConsistentCasingInFileNames": true, // Обеспечивает согласованность регистра в именах файлов
+    "outDir": "./dist",                       // Указывает каталог для скомпилированных файлов
+    "rootDir": "./src"                        // Указывает корневую директорию для исходных файлов
+  },
+  "include": ["src/**/*"], // Указываем, какие файлы TypeScript будут включены в проект
+  "exclude": ["node_modules"] // Исключаем node_modules
 }
