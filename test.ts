@@ -1,0 +1,1 @@
+const test_variable = 1;
