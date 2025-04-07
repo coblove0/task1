@@ -1,11 +1,15 @@
 import React from 'react';
+import MyTab from './components/MyTab/MyTab';
 
 function App() {
   return (
     <div>
-      <h1>Добро пожаловать в Vite + React!</h1>
-      <p>Это главная страница вашего приложения.</p>
+      <MyTab />
     </div>
+    // <div>
+    //   <h1>Добро пожаловать в Vite + React!</h1>
+    //   <p>Это главная страница вашего приложения.</p>
+    // </div>
   );
 }
 

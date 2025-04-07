@@ -1,11 +1,16 @@
 {
   "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "skipLibCheck": true,
     "jsx": "react",
     "baseUrl": "./src",
     "paths": {
       "@components/*": ["components/*"],
       "@utils/*": ["utils/*"],
-      "@models/*": ["models/*"]
+      "@models/*": ["models/*"],
+      "@/*": ["./src/*"]
     },
     "esModuleInterop": true
   }
