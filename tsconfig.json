@@ -7,7 +7,7 @@
     "jsx": "react",
     "baseUrl": "./src",
     "paths": {
-      "@components/*": ["components/*"],
+      "@components/*": ["./src/components/*"],
       "@utils/*": ["utils/*"],
       "@models/*": ["models/*"],
       "@/*": ["./src/*"]
