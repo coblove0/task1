@@ -1,12 +1,14 @@
 import React from 'react';
-import MyTab from './components/MyTab/MyTab';
-import MyButton from './components/MyButton/MyButton';
+import MyTab from 'components/MyTab/MyTab';
+import MyButton from 'components/MyButton/MyButton';
+import MyRating from 'components/MyRating/MyRating';
 
 function App() {
   return (
     <div>
       <MyTab />
       <MyButton />
+      <MyRating />
     </div>
     // <div>
     //   <h1>Добро пожаловать в Vite + React!</h1>
