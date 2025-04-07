@@ -2,13 +2,23 @@ import React from 'react';
 import MyTab from 'components/MyTab/MyTab';
 import MyButton from 'components/MyButton/MyButton';
 import MyRating from 'components/MyRating/MyRating';
+import MyDatePicker from 'components/MyDatePicker/MyDatePicker';
 
 function App() {
   return (
     <div>
-      <MyTab />
-      <MyButton />
-      <MyRating />
+      <h3>
+        <MyTab />
+      </h3>
+      <h3>
+        <MyButton />
+      </h3>
+      <h3>
+        <MyRating />
+      </h3>
+      <h3>
+        <MyDatePicker />
+      </h3>
     </div>
     // <div>
     //   <h1>Добро пожаловать в Vite + React!</h1>
