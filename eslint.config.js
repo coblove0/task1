@@ -18,7 +18,17 @@ export default [
     },
     rules: {
       camelcase: ['error', { properties: 'always' }],
-      "prettier/prettier": "error",
+      "prettier/prettier": [
+        'error',
+        {
+          endOfLine: 'auto',
+          singleQuote: true,
+          trailingComma: 'all',
+          printWidth: 100,
+          tabWidth: 2,
+          semi: true,
+        },
+      ],
     },
   },
 ];
