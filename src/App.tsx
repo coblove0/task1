@@ -8,9 +8,11 @@ import MyModal from 'components/MyModal/MyModal';
 function App() {
   return (
     <div>
+      {/* стили Chakra-ui перекрывают стили tailwind поэтому тут закомментировано
+      нужно показывать или этот компонент или MyModal
       <h3>
         <MyTab />
-      </h3>
+      </h3> */}
       <h3>
         <MyButton />
       </h3>
@@ -24,10 +26,6 @@ function App() {
         <MyModal />
       </h3>
     </div>
-    // <div>
-    //   <h1>Добро пожаловать в Vite + React!</h1>
-    //   <p>Это главная страница вашего приложения.</p>
-    // </div>
   );
 }
 
