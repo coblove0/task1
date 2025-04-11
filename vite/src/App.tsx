@@ -4,12 +4,14 @@ import MyButton from 'components/MyButton/MyButton';
 import MyRating from 'components/MyRating/MyRating';
 import MyDatePicker from 'components/MyDatePicker/MyDatePicker';
 import MyModal from 'components/MyModal/MyModal';
+import MyCard from 'components/MyCard/MyCard';
 
 function App() {
   return (
     <div>
-      {/* стили Chakra-ui перекрывают стили tailwind поэтому тут закомментировано
-      нужно показывать или этот компонент или MyModal
+      <h1>Первая домашка</h1>
+      {/* стили Chakra-ui перекрывают стили tailwind поэтому тут закомментировано нужно показывать или
+      этот компонент или MyModal
       <h3>
         <MyTab />
       </h3> */}
@@ -25,6 +27,8 @@ function App() {
       <h3>
         <MyModal />
       </h3>
+      <h1>Третья домашка</h1>
+      <MyCard />
     </div>
   );
 }
