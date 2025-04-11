@@ -1,4 +1,4 @@
-import Card from './components/Card/card';
+import Card from '../components/Card/card';
 
 
 export default function Page() {
