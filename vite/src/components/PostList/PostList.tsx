@@ -62,11 +62,9 @@ function PostList() {
   } else {
     return (
       <div>
-        <QueryClientProvider client={queryClient}>
-          <Post id={postId} />
-          <div>Комментарии</div>
-          <Comments postId={postId} />
-        </QueryClientProvider>
+        <Post id={postId} />
+        <div>Комментарии</div>
+        <Comments postId={postId} />
       </div>
     );
   }

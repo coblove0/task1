@@ -6,11 +6,16 @@ import MyDatePicker from 'components/MyDatePicker/MyDatePicker';
 import MyModal from 'components/MyModal/MyModal';
 import MyCard from 'components/MyCard/MyCard';
 import PostList from 'components/PostList/PostList';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
     <div>
-      <PostList />
+      <QueryClientProvider client={queryClient}>
+        <PostList />
+      </QueryClientProvider>
     </div>
     // <div>
     //   <h1>Первая домашка</h1>
