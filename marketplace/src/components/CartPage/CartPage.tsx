@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'store/reduxStore';
 import { setProducts } from 'store/reduxStore';
+import { observer } from 'mobx-react-lite';
+import { mobxStore } from 'store/poductStoreMobx';
 
-function CartPage() {
+const CartPage = observer(() => {
   const dispatch = useDispatch();
   const reduxProducts = useSelector((state: RootState) => state.products.products);
   const { syncWithRedux } = useProductStore();
@@ -23,7 +25,7 @@ function CartPage() {
     dispatch(
       setProducts(
         reduxProducts.map((product) =>
-          product.id === id ? { ...product, inCart: false } : product,
+          product.id === id ? { ...product, inCart: false, status: null } : product,
         ),
       ),
     );
@@ -32,29 +34,57 @@ function CartPage() {
     syncWithRedux();
   };
 
+  const handleCheckout = (id: number) => {
+    // Обновляем статус через MobX
+    mobxStore.updateProductStatus(id, 'Оформлен');
+  };
+
   return (
     <div>
       <h1>Корзина</h1>
       {cartItems.length > 0 ? (
         <ul>
-          {cartItems.map((item) => (
-            <li key={item.id} style={{ marginBottom: '10px' }}>
-              <h2>{item.name}</h2>
-              <button
-                onClick={() => handleRemoveFromCart(item.id)}
-                style={{
-                  padding: '5px 10px',
-                  backgroundColor: 'red',
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: '4px',
-                  cursor: 'pointer',
-                }}
-              >
-                Удалить
-              </button>
-            </li>
-          ))}
+          {cartItems.map((item) => {
+            // Получаем статус из MobX Store
+            const mobxProduct = mobxStore.products.find((product) => product.id === item.id);
+            const status = mobxProduct?.status || null;
+
+            return (
+              <li key={item.id} style={{ marginBottom: '10px' }}>
+                <h2>{item.name}</h2>
+                <p>Статус: {status}</p>
+                <button
+                  onClick={() => handleRemoveFromCart(item.id)}
+                  style={{
+                    padding: '5px 10px',
+                    backgroundColor: 'red',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '4px',
+                    cursor: 'pointer',
+                    marginRight: '10px',
+                  }}
+                >
+                  Удалить
+                </button>
+                {status !== 'Оформлен' && (
+                  <button
+                    onClick={() => handleCheckout(item.id)}
+                    style={{
+                      padding: '5px 10px',
+                      backgroundColor: 'green',
+                      color: 'white',
+                      border: 'none',
+                      borderRadius: '4px',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    Оформить заказ
+                  </button>
+                )}
+              </li>
+            );
+          })}
         </ul>
       ) : (
         <p>Ваша корзина пуста</p>
@@ -64,6 +94,6 @@ function CartPage() {
       </Link>
     </div>
   );
-}
+});
 
 export default CartPage;

@@ -34,6 +34,8 @@
     "dayjs": "^1.11.13",
     "eslint-plugin-prettier": "^5.2.5",
     "jotai": "^2.12.3",
+    "mobx": "^6.13.7",
+    "mobx-react-lite": "^4.1.0",
     "node-fetch": "^3.3.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { store } from './reduxStore';
 import { setProducts } from './reduxStore';
+import { mobxStore } from './poductStoreMobx';
 
 export interface ProductStore {
   products: TProduct[];
@@ -14,6 +15,7 @@ export type TProduct = {
   name: string;
   pic: string;
   inCart: boolean;
+  status?: 'На оформлении' | 'Оформлен' | null;
 };
 
 const INITIAL_STATE: TProduct[] = [
@@ -30,21 +32,25 @@ export const useProductStore = create<ProductStore>((set) => ({
   addToCart: (id) =>
     set((state) => {
       const updatedProducts = state.products.map((product) =>
-        product.id === id ? { ...product, inCart: !product.inCart } : product,
+        product.id === id
+          ? { ...product, inCart: !product.inCart, status: 'На оформлении' }
+          : product,
       );
+      mobxStore.setProducts(updatedProducts);
       store.dispatch(setProducts(updatedProducts)); // Синхронизация с Redux
       return { products: updatedProducts };
     }),
   removeProduct: (id) =>
     set((state) => {
       const updatedProducts = state.products.map((product) =>
-        product.id === id ? { ...product, inCart: false } : product,
+        product.id === id ? { ...product, inCart: false, status: null } : product,
       );
       store.dispatch(setProducts(updatedProducts)); // Синхронизация с Redux
       return { products: updatedProducts };
     }),
   syncWithRedux: () => {
     const reduxProducts = store.getState().products.products;
+    mobxStore.syncWithRedux();
     set({ products: reduxProducts });
   },
 }));
