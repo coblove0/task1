@@ -1,16 +1,27 @@
 import React, { useEffect } from 'react';
 import { useProductStore } from 'store/productStore';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'store/reduxStore';
 import { setProducts } from 'store/reduxStore';
 import { observer } from 'mobx-react-lite';
 import { mobxStore } from 'store/poductStoreMobx';
+import { useAtom } from 'jotai';
+import { isAuthenticatedAtom } from 'store/authAtom';
 
 const CartPage = observer(() => {
   const dispatch = useDispatch();
   const reduxProducts = useSelector((state: RootState) => state.products.products);
   const { syncWithRedux } = useProductStore();
+  const [isAuthenticated] = useAtom(isAuthenticatedAtom);
+  const navigate = useNavigate();
+
+  // Перенаправление, если пользователь не авторизован
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/'); // Перенаправляем на главную страницу
+    }
+  }, [isAuthenticated, navigate]);
 
   // Синхронизация Zustand с Redux при загрузке компонента
   useEffect(() => {

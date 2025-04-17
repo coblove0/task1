@@ -1,7 +1,8 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { INITIAL_STATE } from 'const';
 
 const initialState = {
-  products: [],
+  products: INITIAL_STATE,
 };
 
 const productsSlice = createSlice({
