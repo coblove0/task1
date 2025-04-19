@@ -1,12 +1,15 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f9f9f9;
-  color: #333;
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
 }
 
-h1 {
-  color: #0078d7;
-  text-align: center;
+[data-theme='dark'] {
+  --background-color: #000000;
+  --text-color: #ffffff;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
 }

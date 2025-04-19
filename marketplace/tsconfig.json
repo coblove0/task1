@@ -7,10 +7,12 @@
     "jsx": "react-jsx",
     "baseUrl": "./src",
     "paths": {
-      "@components/*": ["./src/components/*"],
+      "@components/*": ["components/*"],
+      "store/*": ["store/*"],
       "@utils/*": ["utils/*"],
       "@models/*": ["models/*"],
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "store": ["./src/store/*"],
     },
     "esModuleInterop": true
   }
