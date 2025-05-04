@@ -7,7 +7,7 @@ const redirectUri = 'http://localhost:3000/auth';
 
 function AuthPage() {
   const [token, setToken] = useState<string | null>(null);
-  const [userInfo, setUserInfo] = useState<{ name?: string; avatar?: string } | null>(null);
+  const [userInfo, setUserInfo] = useState<{ name?: string; avatar?: string; role?: string } | null>(null);
 
   useEffect(() => {
     const currentUrl = window.location.href;
@@ -69,11 +69,16 @@ function AuthPage() {
       }
 
       const userInfo = await response.json();
+
+      // Определение роли на основе поля из userInfo
+      const role = userInfo.default_email?.startsWith('coblove') ? 'Администратор' : 'Пользователь';
+
       setUserInfo({
         name: userInfo.real_name,
         avatar: userInfo.default_avatar_id
           ? `https://avatars.yandex.net/get-yapic/${userInfo.default_avatar_id}/islands-200`
           : undefined,
+        role, // Добавляем роль
       });
     } catch (error) {
       console.error('Ошибка:', error);
@@ -83,7 +88,7 @@ function AuthPage() {
   return (
     <div>
       {userInfo ? (
-        <UserProfile name={userInfo.name} avatar={userInfo.avatar} />
+        <UserProfile name={userInfo.name} avatar={userInfo.avatar} role={userInfo.role} />
       ) : (
         <p>Загрузка...</p>
       )}
